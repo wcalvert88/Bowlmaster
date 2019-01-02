@@ -60,9 +60,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\HeadPin.cs" />
     <Compile Include="Assets\Scripts\Ball.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
+    <Compile Include="Assets\Scripts\HeadPin.cs" />
     <Compile Include="Assets\START Pack\Scripts\ActionMaster2.cs" />
     <Compile Include="Assets\START Pack\Scripts\OurScoreDisplayTest1.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
