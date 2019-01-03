@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
 
     [SerializeField] private Rigidbody rigidBody;
     [SerializeField] private AudioSource audioSource;
+    public bool inPlay = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,8 @@ public class Ball : MonoBehaviour
     }
 
     public void Launch(Vector3 velocity) {
+        inPlay = true;
+        
         launchSpeed = velocity;
         rigidBody.useGravity = true;
         rigidBody.velocity = velocity;
