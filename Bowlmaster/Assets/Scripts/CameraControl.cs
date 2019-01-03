@@ -18,7 +18,7 @@ public class CameraControl : MonoBehaviour
     }
 
     void Update() {
-        print(ball.transform.position.z - headPin.transform.position.z);
+        // print(ball.transform.position.z - headPin.transform.position.z);
 
         if (((ball.transform.position.z - headPin.transform.position.z) < - 100) & (followTrue)) {
             transform.position = ball.transform.position + distFrom;

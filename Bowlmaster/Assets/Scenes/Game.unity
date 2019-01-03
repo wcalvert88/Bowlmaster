@@ -441,6 +441,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1726064726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5306400995382791365, guid: 5453fbb1796a0724cb66a82599ce44a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 5306400995884115091}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1726064734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726064726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7239a80187748b24c9e5ed5650472d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1785466581
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +470,7 @@ GameObject:
   - component: {fileID: 1785466582}
   - component: {fileID: 1785466584}
   - component: {fileID: 1785466583}
+  - component: {fileID: 1785466585}
   m_Layer: 5
   m_Name: Touch Input
   m_TagString: Untagged
@@ -515,6 +534,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785466581}
   m_CullTransparentMesh: 0
+--- !u!114 &1785466585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785466581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1726064734}
+          m_MethodName: DragStart
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1726064734}
+          m_MethodName: DragEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1942124192 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7594977859181663324, guid: 9a2d5e7c07fe8bd47b8b6e60f31930fd,
