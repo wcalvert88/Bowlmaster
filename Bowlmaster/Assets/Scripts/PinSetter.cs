@@ -7,8 +7,11 @@ public class PinSetter : MonoBehaviour
 {
 
     [SerializeField] public Text standingDisplay;
-    [SerializeField] public Ball ball;
+    [SerializeField] private Ball ball;
+    public int lastStandingCount = -1;
+    
     private bool ballEnteredBox = false;
+    private float lastChangeTime;
 
     // Start is called before the first frame update
     void Start()
@@ -19,16 +22,42 @@ public class PinSetter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log(CountStanding());
+
         standingDisplay.text = CountStanding().ToString();
+
+        if (ballEnteredBox) {
+            CheckStanding();
+        }
     }
 
+    void CheckStanding() {
+        // Update the lastStandingCount
+        int currentStanding = CountStanding();
+        if (currentStanding != lastStandingCount) {
+            lastChangeTime = Time.time;
+            lastStandingCount = currentStanding;
+            return;
+        }
+
+        float settleTime = 3f; // How long to wait to consider pins settled
+        if ((Time.time - lastChangeTime) > settleTime) {
+            PinsHaveSettled();
+        }
+        // Call PinsHaveSettled() when they have
+}
+
+    void PinsHaveSettled() {
+        ball.Reset();
+        lastStandingCount = -1; // Indicates new frame
+        ballEnteredBox = false;
+        standingDisplay.color = Color.green;
+    }
     void OnTriggerEnter(Collider other)
     {
         GameObject thingHit = other.gameObject;
         
         if (thingHit.GetComponent<Ball>()) {
-            // Debug.Log("Ball entered");
+
             standingDisplay.color = Color.red;
             ballEnteredBox = true;
         }
