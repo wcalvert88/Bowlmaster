@@ -47,7 +47,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5678900643285010843}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da56613e98eaf3a44b3014f44634bc24, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -101,7 +101,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5678900643487891339}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da56613e98eaf3a44b3014f44634bc24, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -155,7 +155,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5678900643511632601}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da56613e98eaf3a44b3014f44634bc24, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -209,7 +209,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5678900644507928757}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da56613e98eaf3a44b3014f44634bc24, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -263,7 +263,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5678900644730236813}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da56613e98eaf3a44b3014f44634bc24, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -317,7 +317,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5678900644768292106}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da56613e98eaf3a44b3014f44634bc24, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -371,7 +371,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5678900645133291971}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da56613e98eaf3a44b3014f44634bc24, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -425,7 +425,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5678900645208423133}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da56613e98eaf3a44b3014f44634bc24, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -479,7 +479,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5678900645317386149}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da56613e98eaf3a44b3014f44634bc24, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1235,7 +1235,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6370545836945402535}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da56613e98eaf3a44b3014f44634bc24, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1384,6 +1384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distanceToRaise: 40
 --- !u!114 &7913346139921471419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1623,6 +1624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distanceToRaise: 40
 --- !u!1 &9205907104368763889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,6 +1688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distanceToRaise: 40
 --- !u!1 &9205907104645412430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,6 +1752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distanceToRaise: 40
 --- !u!1 &9205907104808944678
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,6 +1816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distanceToRaise: 40
 --- !u!1 &9205907104918053214
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,6 +1880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distanceToRaise: 40
 --- !u!1 &9205907104968978232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,6 +1944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distanceToRaise: 40
 --- !u!1 &9205907105470906736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2001,6 +2008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distanceToRaise: 40
 --- !u!1 &9205907105494350882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,6 +2072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distanceToRaise: 40
 --- !u!1 &9205907105804859232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2127,3 +2136,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distanceToRaise: 40

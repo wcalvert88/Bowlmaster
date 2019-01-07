@@ -9,6 +9,7 @@ public class PinSetter : MonoBehaviour
     [SerializeField] public Text standingDisplay;
     [SerializeField] private Ball ball;
     public int lastStandingCount = -1;
+    public GameObject pinSet;
 
     
     private bool ballEnteredBox = false;
@@ -46,6 +47,10 @@ public class PinSetter : MonoBehaviour
 
     public void RenewPins() {
         Debug.Log("Renewing pins");
+        Instantiate(pinSet, new Vector3(0, 45, 1829), Quaternion.identity);
+        foreach(Pin pins in GameObject.FindObjectsOfType<Pin>()) {
+            pins.GetComponent<Rigidbody>().useGravity = false;
+        }
     }
 
     void CheckStanding() {
