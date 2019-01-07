@@ -9,6 +9,7 @@ public class PinSetter : MonoBehaviour
     [SerializeField] public Text standingDisplay;
     [SerializeField] private Ball ball;
     public int lastStandingCount = -1;
+    public float distanceToRaise = 40f;
     
     private bool ballEnteredBox = false;
     private float lastChangeTime;
@@ -22,12 +23,42 @@ public class PinSetter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         standingDisplay.text = CountStanding().ToString();
 
         if (ballEnteredBox) {
             CheckStanding();
         }
+    }
+
+    public void RaisePins() {
+        // raise standing pins only by distanceToRaise
+        Debug.Log("Raising pins");
+
+        // should be very similar to CountStanding
+        Pin[] pins = GameObject.FindObjectsOfType<Pin>();
+        foreach (Pin pin in pins)
+        {
+            if(pin.IsStanding()) {
+                pin.transform.Translate(new Vector3(0f, lastStandingCount, 0f));
+                Debug.Log(pin.transform.position.y);
+            }
+        }
+    }
+
+    public void LowerPins() {
+        Debug.Log("Lowering pins");
+        Pin[] pins = GameObject.FindObjectsOfType<Pin>();
+        foreach (Pin pin in pins)
+        {
+            if(pin.IsStanding()) {
+                pin.transform.Translate(new Vector3(0f, -1 * lastStandingCount, 0f));
+                Debug.Log(pin.transform.position.y);
+            }
+        }
+    }
+
+    public void RenewPins() {
+        Debug.Log("Renewing pins");
     }
 
     void CheckStanding() {
