@@ -27,7 +27,7 @@ public class PinSetter : MonoBehaviour
         standingDisplay.text = CountStanding().ToString();
 
         if (ballEnteredBox) {
-            CheckStanding();
+            UpdateStandingCountAndSettle();
         }
     }
 
@@ -53,7 +53,7 @@ public class PinSetter : MonoBehaviour
         }
     }
 
-    void CheckStanding() {
+    void UpdateStandingCountAndSettle() {
         // Update the lastStandingCount
         int currentStanding = CountStanding();
         if (currentStanding != lastStandingCount) {
@@ -75,28 +75,7 @@ public class PinSetter : MonoBehaviour
         ballEnteredBox = false;
         standingDisplay.color = Color.green;
     }
-    void OnTriggerEnter(Collider other)
-    {
-        GameObject thingHit = other.gameObject;
-        
-        if (thingHit.GetComponent<Ball>()) {
 
-            standingDisplay.color = Color.red;
-            ballEnteredBox = true;
-        }
-    }
-
-    void OnTriggerExit(Collider other) {
-        
-        if (other.name == "Ball") {
-            return;
-        }
-        
-        if (other.transform.parent.GetComponent<Pin>()) {
-            Debug.Log(other.transform.parent.name + " no longer in pin setter");
-            Destroy(other.transform.parent.gameObject);
-        }
-    }
     public int CountStanding() {
         int standingPins = 0;
         Pin[] pins = GameObject.FindObjectsOfType<Pin>();
@@ -108,4 +87,16 @@ public class PinSetter : MonoBehaviour
         }
         return standingPins;
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        GameObject thingHit = other.gameObject;
+        
+        if (thingHit.GetComponent<Ball>()) {
+
+            standingDisplay.color = Color.red;
+            ballEnteredBox = true;
+        }
+    }
+
 }

@@ -6,10 +6,11 @@ public class Ball : MonoBehaviour
 {
 
     [SerializeField] public Vector3 launchSpeed;
-
+    public bool inPlay = false;
+    
     [SerializeField] private Rigidbody rigidBody;
     [SerializeField] private AudioSource audioSource;
-    public bool inPlay = false;
+
     private Vector3 startPosition;
     private Quaternion startRotation;
 
