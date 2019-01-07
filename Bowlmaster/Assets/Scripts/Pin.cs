@@ -6,17 +6,36 @@ public class Pin : MonoBehaviour
 {
 
     [SerializeField] public float standingThreshold = 3f;
+    public float distanceToRaise = 40f;
+    private Rigidbody rigidBody;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Debug.Log(name + IsStanding());
+    }
+
+    public void RaiseIfStanding() {
+        // raise standing pins only by distanceToRaise
+        
+        if(IsStanding()) {
+            rigidBody.useGravity = false;
+            transform.Translate(new Vector3(0f, distanceToRaise, 0f), Space.World);
+        }
+    }
+
+    public void Lower() {
+        transform.Translate(new Vector3(0f, -distanceToRaise, 0f),  Space.World);
+        rigidBody.useGravity = true;
+    }
+
+    void OnCollisionEnter(Collision collider) {
+        Debug.Log("Pin was hit by " + collider.gameObject.name, collider.gameObject);
     }
 
     public bool IsStanding() {
