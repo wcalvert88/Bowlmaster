@@ -97,10 +97,28 @@ public class ActionMasterTest : MonoBehaviour
 
     [Test]
     public void T08GameEndsAtBowl20() {
-        int[] rolls = {1,1, 1,1, 1,1, 1,1,1,1, 1,1, 1,1, 1,1, 1,1, 1 };
+        int[] rolls = {1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1};
         foreach(int roll in rolls) {
             actionMaster.Bowl(roll);
         }
         Assert.AreEqual(endGame, actionMaster.Bowl(1));
+    }
+
+    [Test]
+    public void T09TidyIfNotStrikeInBowl19And20() {
+        int[] rolls = {1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 10};
+        foreach(int roll in rolls) {
+            actionMaster.Bowl(roll);
+        }
+        Assert.AreEqual(tidy, actionMaster.Bowl(5));
+    }
+
+    [Test]
+    public void T10TidyIfNotStrikeInBowl19And20() {
+        int[] rolls = {1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 1,1, 10};
+        foreach(int roll in rolls) {
+            actionMaster.Bowl(roll);
+        }
+        Assert.AreEqual(tidy, actionMaster.Bowl(0));
     }
 }

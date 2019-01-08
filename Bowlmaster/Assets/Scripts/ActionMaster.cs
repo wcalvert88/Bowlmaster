@@ -19,7 +19,7 @@ public class ActionMaster
 
         // Other behaviour here, e.g. last frame
         // bowl is in last frame
-        // Debug.Log(bowl);
+        Debug.Log(bowl);
         // // T04
         // if (bowl >= 19 && bowl < 21) {
         //     if (pins == 10) {
@@ -39,13 +39,21 @@ public class ActionMaster
         }
 
         // Handle last frame special cases
-        // T05
-        if (bowl >= 19 && Bowl21Awarded()) {
-            bowl += 1;
+        if (bowl == 19 && pins == 10) {
+            bowl++;
             return Action.Reset;
-        // T07
-        } else if (bowl == 20 && !Bowl21Awarded()) {
-            return Action.EndGame;
+        } else if (bowl == 20) {
+            int totalPins = bowls[19 - 1] + bowls[20 - 1];
+            bowl++;
+            if (bowls[19-1] == 10 && bowls[20-1] == 0) {
+                return Action.Tidy;
+            } else if (totalPins == 10) {
+                return Action.Reset;
+            } else if (Bowl21Awarded()) {
+                return Action.Tidy;
+            } else {
+                return Action.EndGame;
+            }
         }
 
         // T01
