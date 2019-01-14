@@ -11,7 +11,7 @@ public class Shredder : MonoBehaviour
         }
         
         if (other.transform.parent.GetComponent<Pin>()) {
-            Debug.Log(other.transform.parent.name + " no longer in pin setter");
+            // Debug.Log(other.transform.parent.name + " no longer in pin setter");
             Destroy(other.transform.parent.gameObject);
         }
     }

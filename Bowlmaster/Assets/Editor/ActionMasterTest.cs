@@ -141,4 +141,13 @@ public class ActionMasterTest : MonoBehaviour
         Assert.AreEqual(reset, actionMaster.Bowl(10));	
         Assert.AreEqual(endGame, actionMaster.Bowl(10));	
     }
+
+    [Test]
+    public void T13BallBallStrikeReset() {
+        int[] rolls = {1,1};
+        foreach (int roll in rolls) {
+            actionMaster.Bowl(roll);
+        }
+        Assert.AreEqual(endTurn, actionMaster.Bowl(10));
+    }
 }

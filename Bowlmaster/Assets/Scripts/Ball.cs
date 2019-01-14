@@ -35,7 +35,6 @@ public class Ball : MonoBehaviour
     }
 
     public void Reset() {
-        Debug.Log("Resetting ball");
         inPlay = false;
         rigidBody.useGravity = false;
         rigidBody.velocity = Vector3.zero;

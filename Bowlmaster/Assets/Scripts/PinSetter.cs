@@ -11,42 +11,42 @@ public class PinSetter : MonoBehaviour
     public int lastStandingCount = -1;
     public GameObject pinSet;
 
+    private int lastSettledCount = 10;
     
     private bool ballEnteredBox = false;
     private float lastChangeTime;
+    private ActionMaster actionMaster = new ActionMaster();
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         ball = GameObject.FindObjectOfType<Ball>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         standingDisplay.text = CountStanding().ToString();
-
         if (ballEnteredBox) {
             UpdateStandingCountAndSettle();
         }
     }
 
     public void RaisePins() {
-        Debug.Log("Raising pins");
         foreach(Pin pin in GameObject.FindObjectsOfType<Pin>()) {
             pin.RaiseIfStanding();
         }
     }
 
     public void LowerPins() {
-        Debug.Log("Lowering pins");
         foreach(Pin pin in GameObject.FindObjectsOfType<Pin>()) {
             pin.Lower();
         }
     }
 
     public void RenewPins() {
-        Debug.Log("Renewing pins");
         Instantiate(pinSet, new Vector3(0, 45, 1829), Quaternion.identity);
         foreach(Pin pins in GameObject.FindObjectsOfType<Pin>()) {
             pins.GetComponent<Rigidbody>().useGravity = false;
@@ -70,6 +70,24 @@ public class PinSetter : MonoBehaviour
 }
 
     void PinsHaveSettled() {
+        int standing = CountStanding();
+        int pinFall = lastSettledCount - standing;
+        lastSettledCount = standing;
+
+        ActionMaster.Action action = actionMaster.Bowl(pinFall);
+
+        if(action == ActionMaster.Action.Tidy) {
+            animator.SetTrigger("tidyTrigger");
+        } else if (action == ActionMaster.Action.EndTurn) {
+            animator.SetTrigger("resetTrigger");
+            lastSettledCount = 10;
+        } else if (action == ActionMaster.Action.Reset) {
+            animator.SetTrigger("resetTrigger");
+            lastSettledCount = 10;
+        } else if (action == ActionMaster.Action.EndTurn) {
+            throw new UnityException("Don't know how to handle end game yet");
+        }
+
         ball.Reset();
         lastStandingCount = -1; // Indicates new frame
         ballEnteredBox = false;
@@ -98,5 +116,4 @@ public class PinSetter : MonoBehaviour
             ballEnteredBox = true;
         }
     }
-
 }
