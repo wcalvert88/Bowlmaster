@@ -143,11 +143,8 @@ public class ActionMasterTest : MonoBehaviour
     }
 
     [Test]
-    public void T13BallBallStrikeReset() {
-        int[] rolls = {1,1};
-        foreach (int roll in rolls) {
-            actionMaster.Bowl(roll);
-        }
-        Assert.AreEqual(endTurn, actionMaster.Bowl(10));
+    public void	T13ZeroOneGivesEndTurn() {	
+        actionMaster.Bowl(0);
+        Assert.AreEqual(endTurn, actionMaster.Bowl(1));	
     }
 }

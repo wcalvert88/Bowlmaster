@@ -8,15 +8,16 @@ public class PinSetter : MonoBehaviour
 
     [SerializeField] public Text standingDisplay;
     [SerializeField] private Ball ball;
-    public int lastStandingCount = -1;
+    private int lastStandingCount = -1;
     public GameObject pinSet;
 
     private int lastSettledCount = 10;
     
-    private bool ballEnteredBox = false;
+    private bool ballLeftBox = false;
     private float lastChangeTime;
-    private ActionMaster actionMaster = new ActionMaster();
+
     private Animator animator;
+    private ActionMaster actionMaster = new ActionMaster();
 
     // Start is called before the first frame update
     void Start()
@@ -29,9 +30,14 @@ public class PinSetter : MonoBehaviour
     void Update()
     {
         standingDisplay.text = CountStanding().ToString();
-        if (ballEnteredBox) {
+        if (ballLeftBox) {
             UpdateStandingCountAndSettle();
+            standingDisplay.color = Color.red;
         }
+    }
+
+    public void SetBallLeftBox() {
+        ballLeftBox = true;
     }
 
     public void RaisePins() {
@@ -73,7 +79,7 @@ public class PinSetter : MonoBehaviour
         int standing = CountStanding();
         int pinFall = lastSettledCount - standing;
         lastSettledCount = standing;
-
+        
         ActionMaster.Action action = actionMaster.Bowl(pinFall);
 
         if(action == ActionMaster.Action.Tidy) {
@@ -90,7 +96,7 @@ public class PinSetter : MonoBehaviour
 
         ball.Reset();
         lastStandingCount = -1; // Indicates new frame
-        ballEnteredBox = false;
+        ballLeftBox = false;
         standingDisplay.color = Color.green;
     }
 
@@ -113,7 +119,7 @@ public class PinSetter : MonoBehaviour
         if (thingHit.GetComponent<Ball>()) {
 
             standingDisplay.color = Color.red;
-            ballEnteredBox = true;
+            ballLeftBox = true;
         }
     }
 }
