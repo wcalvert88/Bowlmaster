@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\ActionMasterTest.cs" />
+     <Compile Include="Assets\Editor\ScoreMasterTest.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/wcalv/Desktop/Unity/Repos/Unity2D/Bowlmaster/Bowlmaster/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
