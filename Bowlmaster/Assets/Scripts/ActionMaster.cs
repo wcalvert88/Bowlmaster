@@ -19,7 +19,7 @@ public class ActionMaster
         return currentAction;
     }
 
-    public Action Bowl(int pins) { // TODO make private after changing PinSetter
+    private Action Bowl(int pins) { // TODO make private after changing PinSetter
 
         if (pins < 0 || pins > 10) {
             throw new UnityException("Invalid number of pins!");
@@ -50,10 +50,7 @@ public class ActionMaster
                 return Action.EndGame;
             }
         }
-
-        // T01
-
-
+        
         // T02
         // If first bowl of frame return Action.Tidy
         if (bowl % 2 != 0) { // First bowl of frame
