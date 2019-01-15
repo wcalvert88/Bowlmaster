@@ -43,6 +43,7 @@ public class PinSetter : MonoBehaviour
     public void RaisePins() {
         foreach(Pin pin in GameObject.FindObjectsOfType<Pin>()) {
             pin.RaiseIfStanding();
+            
         }
     }
 
