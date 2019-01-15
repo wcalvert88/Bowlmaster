@@ -19,25 +19,56 @@ public class ScoreMaster {
     // Return a list of individual frame scores, NOT cumulative
     public static List<int> ScoreFrames(List<int> rolls) {
         List<int> frameList = new List<int>();
-        int frameScore = 0;
+        int frameScore;
         // Your code here
-        
+        int rollsCount = rolls.Count;
+        // T03Bowl2345 = {5, 9}  need to find a way to split rolls;
+        List<int> subRolls = new List<int>();
 
+        for (int i = 0; i < rolls.Count; i++) {
+            subRolls.Add(rolls[i]);
+            if (subRolls.Count < 2) {
+                continue;
+            } else if (subRolls.Count >= 2) {
+                // T02Bowl234 = 5
+                // if (rollsCount % 2 == 0) {
+                    frameScore = 0;
+                    // T01Bowl23 == 5
+                    foreach(int subRoll in subRolls) {
+                        frameScore += subRoll;
+                    }
+                    frameList.Add(frameScore);
+                // } else {
+                //     frameScore = 0;
+                //     rolls.RemoveAt(rollsCount - 1);
+                //     foreach(int roll in rolls) {
+                //         frameScore += roll;
+                //     }
+                //     frameList.Add(frameScore);
+                // }
 
-        // T02Bowl234 = 5
-        if (rolls.Count % 2 == 0) {
-
-            // T01Bowl23 == 5
-            foreach(int roll in rolls) {
-                frameScore += roll;
-            }
-        } else {
-            rolls.RemoveAt(rolls.Count - 1);
-            foreach(int roll in rolls) {
-                frameScore += roll;
+                subRolls.RemoveRange(0,2);
             }
         }
-        frameList.Add(frameScore);
+        // // T02Bowl234 = 5
+        // if (rollsCount % 2 == 0) {
+        //     frameScore = 0;
+        //     // T01Bowl23 == 5
+        //     foreach(int roll in rolls) {
+        //         frameScore += roll;
+        //     }
+        //     frameList.Add(frameScore);
+        // } else {
+        //     frameScore = 0;
+        //     rolls.RemoveAt(rollsCount - 1);
+        //     foreach(int roll in rolls) {
+        //         frameScore += roll;
+        //     }
+        //     frameList.Add(frameScore);
+        // }
+        foreach(int frame in frameList) {
+            Debug.Log(frame);
+        }
         return frameList;
     }
 
