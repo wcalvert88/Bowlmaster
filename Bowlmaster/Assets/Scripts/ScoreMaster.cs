@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ScoreMaster {
 
@@ -21,6 +22,8 @@ public class ScoreMaster {
         List<int> frameList = new List<int>();
         int frameScore;
         // Your code here
+        bool tempScoreNeeded = false;
+        int currentTempScore = 0;
         int rollsCount = rolls.Count;
         // T03Bowl2345 = {5, 9}  need to find a way to split rolls;
         List<int> subRolls = new List<int>();
@@ -32,6 +35,8 @@ public class ScoreMaster {
 
             // T07Strike returns nothing
             } else if (subRolls.Count < 2 && subRolls.Contains(10)) {
+                tempScoreNeeded = true;
+                currentTempScore = 10;
                 break;                
             } else if (subRolls.Count == 2) {
                 // T02Bowl234 = 5
@@ -41,9 +46,14 @@ public class ScoreMaster {
                     frameScore += subRoll;
                 }
 
+
+                if (tempScoreNeeded) {
+                    frameList.Add(currentTempScore + subRolls.First());
+                }
                 // T08Spare returns nothing
                 if (frameScore == 10) {
-                    break;
+                    tempScoreNeeded = true;
+                    currentTempScore = 10;
                 } else {
                     frameList.Add(frameScore);
                 }
