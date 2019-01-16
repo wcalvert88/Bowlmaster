@@ -31,6 +31,12 @@ public class ScoreMaster {
         for (int i = 0; i < rolls.Count; i++) {
             subRolls.Add(rolls[i]);
             if (subRolls.Count < 2 && !subRolls.Contains(10)) {
+                // T10Spare bonus
+                if (tempScoreNeeded) {
+                    frameList.Add(currentTempScore + subRolls.First());
+                    tempScoreNeeded = false;
+                    currentTempScore = 0;
+                }
                 continue;
 
             // T07Strike returns nothing
@@ -47,9 +53,6 @@ public class ScoreMaster {
                 }
 
 
-                if (tempScoreNeeded) {
-                    frameList.Add(currentTempScore + subRolls.First());
-                }
                 // T08Spare returns nothing
                 if (frameScore == 10) {
                     tempScoreNeeded = true;
