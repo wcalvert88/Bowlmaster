@@ -32,13 +32,16 @@ public class ScoreMaster {
 
         for (int i = 0; i < rolls.Count; i++) {
             subRolls.Add(rolls[i]);
+            // Debug.Log("Current roll" + rolls[i] + " subRolls count " + subRolls.Count);
             if (subRolls.Count < 2 && !subRolls.Contains(10)) {
                 // T10Spare bonus and T11 moved here
                 if (tempScoreNeededForSpare) {
                     frameList.Add(currentTempScoreForSpare + subRolls.First());
+                            
                     tempScoreNeededForSpare = false;
                     currentTempScoreForSpare = 0;
                 }
+                // Debug.Log("continue hit T10");
                 continue;
 
             // T07Strike returns nothing
@@ -46,7 +49,8 @@ public class ScoreMaster {
                 tempScoreNeededForStrike = true;
                 currentTempScoreForStrike = 10;
                 subRolls.RemoveAt(0);
-                continue;                
+                // Debug.Log("continue hit T07");
+                continue;        
             } else if (subRolls.Count == 2) {
                 // T02Bowl234 = 5
                 frameScore = 0;
@@ -54,12 +58,17 @@ public class ScoreMaster {
                 foreach(int subRoll in subRolls) {
                     frameScore += subRoll;
                 }
+                // Debug.Log("FrameScore" + frameScore);
                 //T12Strike Bonus
                 if (tempScoreNeededForStrike) {
                     frameList.Add(currentTempScoreForStrike + frameScore);
+                    PrintFrames(frameList);
                     frameList.Add(frameScore);
+                    PrintFrames(frameList);
                     currentTempScoreForStrike = 0;
                     tempScoreNeededForStrike = false;
+                    // Debug.Log("continue hit T12");
+                    subRolls.RemoveRange(0,2);
                     continue;
                 }
 
@@ -69,32 +78,21 @@ public class ScoreMaster {
                     currentTempScoreForSpare = 10;
                 } else {
                     frameList.Add(frameScore);
+                    PrintFrames(frameList);
                 }
                 
                 subRolls.RemoveRange(0,2);
             }
         }
-        // // T02Bowl234 = 5
-        // if (rollsCount % 2 == 0) {
-        //     frameScore = 0;
-        //     // T01Bowl23 == 5
-        //     foreach(int roll in rolls) {
-        //         frameScore += roll;
-        //     }
-        //     frameList.Add(frameScore);
-        // } else {
-        //     frameScore = 0;
-        //     rolls.RemoveAt(rollsCount - 1);
-        //     foreach(int roll in rolls) {
-        //         frameScore += roll;
-        //     }
-        //     frameList.Add(frameScore);
-        // }
-        foreach(int frame in frameList) {
-            Debug.Log(frame);
-        }
+
+        PrintFrames(frameList);
         return frameList;
     }
 
+    public static void PrintFrames(List<int> frameList) {
+        foreach(int frame in frameList) {
+            Debug.Log(frame);
+        }
+    }
 
 }
