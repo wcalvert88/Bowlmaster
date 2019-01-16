@@ -27,26 +27,27 @@ public class ScoreMaster {
 
         for (int i = 0; i < rolls.Count; i++) {
             subRolls.Add(rolls[i]);
-            if (subRolls.Count < 2) {
+            if (subRolls.Count < 2 && !subRolls.Contains(10)) {
                 continue;
-            } else if (subRolls.Count >= 2) {
-                // T02Bowl234 = 5
-                // if (rollsCount % 2 == 0) {
-                    frameScore = 0;
-                    // T01Bowl23 == 5
-                    foreach(int subRoll in subRolls) {
-                        frameScore += subRoll;
-                    }
-                    frameList.Add(frameScore);
-                // } else {
-                //     frameScore = 0;
-                //     rolls.RemoveAt(rollsCount - 1);
-                //     foreach(int roll in rolls) {
-                //         frameScore += roll;
-                //     }
-                //     frameList.Add(frameScore);
-                // }
 
+            // T07Strike returns nothing
+            } else if (subRolls.Count < 2 && subRolls.Contains(10)) {
+                break;                
+            } else if (subRolls.Count == 2) {
+                // T02Bowl234 = 5
+                frameScore = 0;
+                // T01Bowl23 == 5
+                foreach(int subRoll in subRolls) {
+                    frameScore += subRoll;
+                }
+
+                // T08Spare returns nothing
+                if (frameScore == 10) {
+                    break;
+                } else {
+                    frameList.Add(frameScore);
+                }
+                
                 subRolls.RemoveRange(0,2);
             }
         }
