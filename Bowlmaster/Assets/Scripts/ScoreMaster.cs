@@ -22,8 +22,10 @@ public class ScoreMaster {
         List<int> frameList = new List<int>();
         int frameScore;
         // Your code here
-        bool tempScoreNeeded = false;
-        int currentTempScore = 0;
+        bool tempScoreNeededForSpare = false;
+        bool tempScoreNeededForStrike = false;
+        int currentTempScoreForSpare = 0;
+        int currentTempScoreForStrike = 0;
         int rollsCount = rolls.Count;
         // T03Bowl2345 = {5, 9}  need to find a way to split rolls;
         List<int> subRolls = new List<int>();
@@ -31,19 +33,20 @@ public class ScoreMaster {
         for (int i = 0; i < rolls.Count; i++) {
             subRolls.Add(rolls[i]);
             if (subRolls.Count < 2 && !subRolls.Contains(10)) {
-                // T10Spare bonus
-                if (tempScoreNeeded) {
-                    frameList.Add(currentTempScore + subRolls.First());
-                    tempScoreNeeded = false;
-                    currentTempScore = 0;
+                // T10Spare bonus and T11 moved here
+                if (tempScoreNeededForSpare) {
+                    frameList.Add(currentTempScoreForSpare + subRolls.First());
+                    tempScoreNeededForSpare = false;
+                    currentTempScoreForSpare = 0;
                 }
                 continue;
 
             // T07Strike returns nothing
             } else if (subRolls.Count < 2 && subRolls.Contains(10)) {
-                tempScoreNeeded = true;
-                currentTempScore = 10;
-                break;                
+                tempScoreNeededForStrike = true;
+                currentTempScoreForStrike = 10;
+                subRolls.RemoveAt(0);
+                continue;                
             } else if (subRolls.Count == 2) {
                 // T02Bowl234 = 5
                 frameScore = 0;
@@ -51,12 +54,19 @@ public class ScoreMaster {
                 foreach(int subRoll in subRolls) {
                     frameScore += subRoll;
                 }
-
+                //T12Strike Bonus
+                if (tempScoreNeededForStrike) {
+                    frameList.Add(currentTempScoreForStrike + frameScore);
+                    frameList.Add(frameScore);
+                    currentTempScoreForStrike = 0;
+                    tempScoreNeededForStrike = false;
+                    continue;
+                }
 
                 // T08Spare returns nothing
                 if (frameScore == 10) {
-                    tempScoreNeeded = true;
-                    currentTempScore = 10;
+                    tempScoreNeededForSpare = true;
+                    currentTempScoreForSpare = 10;
                 } else {
                     frameList.Add(frameScore);
                 }
