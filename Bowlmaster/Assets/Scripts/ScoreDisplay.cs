@@ -8,7 +8,7 @@ public class ScoreDisplay : MonoBehaviour
 
     public Text[] rollTexts, frameTexts;
     // Start is called before the first frame update
-    
+
     void Start()
     {
         rollTexts[0].text = "X";
@@ -19,5 +19,9 @@ public class ScoreDisplay : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void FillRollCard(List<int> rolls) {
+        rolls[-1] = 1;
     }
 }
