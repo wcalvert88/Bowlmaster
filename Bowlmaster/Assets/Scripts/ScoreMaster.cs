@@ -20,6 +20,7 @@ public class ScoreMaster {
     public static List<int> ScoreFrames(List<int> rolls) {
         List<int> frames = new List<int>();
 
+        // Index i points to 2nd bowl of frame.
         for (int i = 1; i < rolls.Count; i += 2) {
             if (frames.Count == 10) { // prevents going onto an 11th frame
                 break;
