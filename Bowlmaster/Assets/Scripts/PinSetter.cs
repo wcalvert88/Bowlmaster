@@ -10,7 +10,7 @@ public class PinSetter : MonoBehaviour
     private Animator animator;
     private PinCounter pinCounter;
 
-    ActionMaster actionMaster = new ActionMaster();
+    // ActionMaster actionMaster = new ActionMaster();
 
     // Start is called before the first frame update
     void Start()

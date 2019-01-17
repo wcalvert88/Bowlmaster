@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\ActionMaster.cs" />
+     <Compile Include="Assets\Scripts\ActionMaster3.cs" />
      <Compile Include="Assets\Scripts\Ball.cs" />
      <Compile Include="Assets\Scripts\CameraControl.cs" />
      <Compile Include="Assets\Scripts\DragLaunch.cs" />
@@ -65,7 +66,6 @@
      <Compile Include="Assets\Scripts\ScoreDisplay.cs" />
      <Compile Include="Assets\Scripts\ScoreMaster.cs" />
      <Compile Include="Assets\Scripts\Shredder.cs" />
-     <Compile Include="Assets\START Pack\Scripts\ActionMaster2.cs" />
      <Compile Include="Assets\START Pack\Scripts\OurScoreDisplayTest1.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/wcalv/Desktop/Unity/Repos/Unity2D/Bowlmaster/Bowlmaster/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

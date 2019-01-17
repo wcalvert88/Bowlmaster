@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class ScoreMaster {
+public static class ScoreMaster {
 
     // Returns a list of cumulative scores, like a normal score card
     public static List<int> ScoreCumulative(List<int> rolls) {
