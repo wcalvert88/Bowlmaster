@@ -40,8 +40,10 @@ public class DragLaunch : MonoBehaviour
     }
 
     public void MoveStart(float amount) {
+        
         if (!ball.inPlay) {
             Debug.Log("Ball moved " + amount);
+            float xPos = Mathf.Clamp(ball.transform.position.x + amount, -150f, 150f);
             ball.transform.Translate(new Vector3(amount, 0, 0));
         }
     }
