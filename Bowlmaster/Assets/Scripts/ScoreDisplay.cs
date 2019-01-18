@@ -27,7 +27,7 @@ public class ScoreDisplay : MonoBehaviour
         for (int i = 0; i < rolls.Count; i++) {
             int box = output.Length + 1;
 
-            if (box % 2 == 0 && rolls[i - 1] + rolls[i] == 10) {
+            if ((box % 2 == 0 || box == 21) && rolls[i - 1] + rolls[i] == 10) {
                 output += "/";
             } else if (box >= 19 && rolls[i] == 10) {
                 output += "X";
